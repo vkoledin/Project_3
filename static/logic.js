@@ -7,12 +7,6 @@ let myMap = L.map("map", {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(myMap);
 
-
-
-// TO MAP TOP 3 OR TOP 5 or 10 COUNTRIES IN THE WORLD  , THE MOST NETLIX USERS
-
-
-
 let countryMarkers = [];
 
 for (let i = 0; i < countries.length; i++) {
@@ -30,7 +24,7 @@ for (let i = 0; i < countries.length; i++) {
     color: "white",
     fillColor: '#F0F8FF'
     weight :2
-    radius: Math.sqrt(countries[i].gdp_pc) * 500
+   
   }).addTo(myMap);
 
 

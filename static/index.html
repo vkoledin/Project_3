@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Basic Map</title>
+  <title>Heatmap of Netflix Users</title>
 
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -15,6 +15,12 @@
     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
     crossorigin=""></script>
 
+  <!-- Leaflet.heat JavaScript code -->
+  <script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>  
+  
+  <!--D3.js Javascript code-->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
   <!-- Our CSS -->
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
@@ -23,8 +29,9 @@
   
   <div id="map"></div>
 
- 
+   <!--Our JavaScript--> 
   <script type="text/javascript" src="logic.js"></script>
 </body>
-
+   
 </html>
+

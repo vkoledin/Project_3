@@ -13,6 +13,7 @@ d3.json("countries.json").then(countries => {
          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(myMap);
 
+    
     //The heatMap data
       let heatData = countries.map(country => [
           country.location[0],

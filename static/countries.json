@@ -4,7 +4,7 @@
       "Netflix_users" : 451
     },
     { "name": "Spain",
-      "location" : [40.2085,-3.7130],
+      "location" : [40.4637,-3.7492],
       "Netflix_users" : 451
     },
     { "name": "Canada",
@@ -16,7 +16,7 @@
       "Netflix_users" : 183
     },
     { "name": "Australia",
-      "location" : [-25.2744, 133.7751],
+      "location" : [-25.2744,133.7751],
       "Netflix_users" : 183
     },
     { "name": "Germany",

@@ -1,18 +1,22 @@
 console.log("script");
 
 let countries;
-
 // Fetch countries and populate dropdown on page load
+// ensures script runs only after HTML is fully loaded
 document.addEventListener('DOMContentLoaded', function() {
+    // making GET request to API end point, expecting JSON response
     d3.json("/api/allcountries").then(function(data) {
+        // need .countries to access array of country names because data is a JSON object, 
+        // with countries as the key allowing to access the array of country names
         countries = data.countries;
         console.log(countries);
 
         // Populate dropdown from countries array
         const select = d3.select("#selCountryDataset");
-        
+        // iteraing over each country in the 'countries' array
         countries.forEach(country => {
             select.append('option')
+                // set value attribute of <option> element and text (making them visible) of <option>
                 .attr('value', country)
                 .text(country);
         });
@@ -56,6 +60,7 @@ let myPieChart;
 function optionChanged(targ) {
     // Use the selected country to fetch subscription types data
     console.log(targ)
+    // asynchornouly fetches subscripotion types data from endpoint
     d3.json(`/api/subscriptiontypes/${targ}`).then(function(subscriptionData) {
        // Parse the JSON string into an object
        const subscription_counts = JSON.parse(subscriptionData.subscription_counts);
@@ -88,34 +93,35 @@ function optionChanged(targ) {
     console.error('Error fetching subscription data:', error);
     // Handle error gracefully, e.g., display error message to the user
 });
-d3.json(`/api/devices/${targ}`).then(function(deviceData) {
-    // Parse the JSON string into an object
-    const device_counts = JSON.parse(deviceData.device_counts);
-    console.log(device_counts)
-    // Extract Labels and Values from the JSON object
-    const labels = Object.keys(device_counts);
-    const values = Object.values(device_counts);
-     console.log(labels)
-     console.log(values)
-    // Create data object for Plotly pie chart
-    const data = [{
-     labels: labels,
-     values: values,
-     type: 'pie',
-     marker: {
-         colors: ['#FF5733', '#33FF57', '#3380FF'] 
-     }
- }];
- 
- // Set layout for the pie chart
- const layout = {
-     title: 'Device Types',
-     showlegend: true // Display legend
- };
- 
- // Render the Plotly pie chart
- Plotly.newPlot('DeviceChart', data, layout);
-})
+    // fetch device data from endpoint
+    d3.json(`/api/devices/${targ}`).then(function(deviceData) {
+        // Parse the JSON string into an object
+        const device_counts = JSON.parse(deviceData.device_counts);
+        console.log(device_counts)
+        // Extract Labels and Values from the JSON object
+        const labels = Object.keys(device_counts);
+        const values = Object.values(device_counts);
+        console.log(labels)
+        console.log(values)
+        // Create data object for Plotly pie chart
+        const data = [{
+        labels: labels,
+        values: values,
+        type: 'pie',
+        marker: {
+            colors: ['#FF5733', '#33FF57', '#3380FF'] 
+        }
+    }];
+    
+    // Set layout for the pie chart
+    const layout = {
+        title: 'Device Types',
+        showlegend: true // Display legend
+    };
+    
+    // Render the Plotly pie chart
+    Plotly.newPlot('DeviceChart', data, layout);
+    })
 .catch(function(error) {
  console.error('Error fetching subscription data:', error);
  // Handle error gracefully, e.g., display error message to the user
@@ -127,7 +133,9 @@ document.addEventListener('DOMContentLoaded', function() {
     d3.json("/api/allcountries/allsubscriptions").then(function(allsubs) {
         console.log(allsubs)
        // Extract relevant data
+       // maps through allsubs to extract an array of country names
        const countries=allsubs.map(item=>item.Country);
+       // determines subscripotion types by filtering out the Country key from the first object in allsubs
        const subTypes=Object.keys(allsubs[0]).filter(key=>key!=='Country');
        console.log(countries)
 

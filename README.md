@@ -3,7 +3,7 @@
 In this project, we decided to analyze the user data on the Netflix platform. We tried to adress the ethical challenges and tried to come up with some solutions. We analyzed the revenue, the demographics and locations. 
 ## The Dashboard
 We built a dashboard to proivde insights into Netflix's user base across different countries, focusing on subscription types and device usage. The dashboard is powered by a Flask backend with interactive Plotly visualizations. The dashbaord has a dropdown menu to select a country allowing the user to see two pie charts that are dynamically generated based on the selected country. These charts show the proportion of subscription types and devices used in the selected country. Below that the user can see a stacked bar chart that provides a global view of subscription types. Each bar represents a country, and the segments within the bars represent different subscription plans allowing the user to compare the popularity of different plans across countries.Finally, there is another dropdown to select a subscription type, and a bar chart that shows the number of users for that plan across different countries. 
-The flask backend served several key functions in our dashboard:
+The flask backend served several key functions in our dashboard:<br>
 **1. Purpose and Functionality:**
 * **Data Handling:** It manages the extraction and manipulation of data from our database (or CSV file in this case).
 * **API Endpoints:** Flask provides endpoints that our frontend interacts with to retrieve specific data based on user requests.
